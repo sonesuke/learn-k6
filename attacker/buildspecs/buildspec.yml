@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Pull grafana/k6 image..
+      - docker pull grafana/k6
+  build:
+    commands:
+      - echo Run performance test
+      - bash scripts/test.sh
+  post_build:
+    commands:
+      - echo Performance test complete
+
+artifacts:
+  files:
+    - "**/*"
